@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+{% block title %}Home{% endblock %}
+{% block container %}
+    {% for movie in movies %}
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ movie.title | upper}}</h5>
+                <p class="card-text">{{ movie.realisator.firstName  }}  {{ movie.realisator.lastname  }}</p>
+                <p class="card-text">{{ movie.releaseDate|date('Y-m-d')}}</p>
+                <p class="card-text">{{ movie.description}}</p>
+                <a href="/movie/{{movie.id}}" class="btn btn-primary">Open detail</a>
+            </div>
+        </div>
+        <br>
+    {% endfor %}
+{% endblock %}
