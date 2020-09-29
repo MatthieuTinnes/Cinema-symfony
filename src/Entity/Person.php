@@ -35,9 +35,13 @@ class Person
     private $biography;
 
     /**
-     * @ORM\OneToMany(targetEntity=Movie::class, mappedBy="realisator")
+     * @ORM\ManyToMany(targetEntity=Movie::class, mappedBy="casting")
      */
     private $movies;
+    /**
+     * @ORM\OneToMany(targetEntity=Movie::class, mappedBy="realisator")
+     */
+    private $realisatorMovies;
 
     public function __construct()
     {

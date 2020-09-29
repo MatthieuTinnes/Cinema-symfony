@@ -65,7 +65,7 @@ class MovieRepository extends ServiceEntityRepository
             ->addSelect("p")
             ->setParameter(1, $slug)
             ->getQuery()
-            ->getOneOrNullResult();
+            ->getSingleResult();
 
     }
 }

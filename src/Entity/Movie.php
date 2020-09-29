@@ -38,9 +38,13 @@ class Movie implements SluggableInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $description;
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $imagePath;
 
     /**
-     * @ORM\ManyToOne(targetEntity=person::class, inversedBy="movies")
+     * @ORM\ManyToOne(targetEntity=person::class, inversedBy="realisatorMovies")
      */
     private $realisator;
 
@@ -50,7 +54,7 @@ class Movie implements SluggableInterface
     private $category;
 
     /**
-     * @ORM\ManyToMany(targetEntity=person::class)
+     * @ORM\ManyToMany(targetEntity=person::class,inversedBy="movies")
      */
     private $casting;
 
@@ -148,6 +152,22 @@ class Movie implements SluggableInterface
         }
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImagePath()
+    {
+        return $this->imagePath;
+    }
+
+    /**
+     * @param mixed $imagePath
+     */
+    public function setImagePath($imagePath): void
+    {
+        $this->imagePath = $imagePath;
     }
 
     /**

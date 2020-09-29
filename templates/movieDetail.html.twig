@@ -2,6 +2,7 @@
 {% block title %}Movie detail{% endblock %}
 {% block container %}
         <div class="card">
+            <img class="card-img-top" style="width:30%; height:30%" src="{{ movie.imagePath }}" alt="Image not available">
             <div class="card-body">
                 <h5 class="card-title">{{ movie.title | upper}}</h5>
                 <a href="/person/{{ movie.realisator.id}}"> <p class="card-text">{{ movie.realisator.firstName  }}  {{ movie.realisator.lastname  }}</p></a>

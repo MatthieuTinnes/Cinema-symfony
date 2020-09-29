@@ -5,6 +5,7 @@ use App\Entity\Category;
 use App\form\type\MovieType;
 use App\Repository\MovieRepository;
 use App\Repository\PersonRepository;
+use App\Service\MovieService;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -79,5 +80,16 @@ class MovieController extends AbstractController
         return $this->render('addMovie.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/add_random_movie")
+     * @param MovieService $movieService
+     * @param Request $request
+     * @return RedirectResponse|Response
+     */
+    public function addRandomMovie(MovieService $movieService, Request $request){
+        $movieService->generateRandomFilm();
+        return $this->redirectToRoute('movieList');
     }
 }
