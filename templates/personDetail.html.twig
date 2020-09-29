@@ -1,0 +1,11 @@
+{% extends "base.html.twig" %}
+{% block title %}Movie detail{% endblock %}
+{% block container %}
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ person.lastname | upper}}</h5>
+                <p class="card-text">{{ person.firstName  }}  {{ person.lastname  }}</p>
+                <p class="card-text">{{ person.biography}}</p>
+            </div>
+        </div>
+{% endblock %}

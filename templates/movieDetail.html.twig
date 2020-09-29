@@ -4,7 +4,7 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">{{ movie.title | upper}}</h5>
-                <p class="card-text">{{ movie.realisator.firstName  }}  {{ movie.realisator.lastname  }}</p>
+                <a href="/person/{{ movie.realisator.id}}"> <p class="card-text">{{ movie.realisator.firstName  }}  {{ movie.realisator.lastname  }}</p></a>
                 <p class="card-text">{{ movie.releaseDate|date('Y-m-d')}}</p>
                 <p class="card-text">{{ movie.description}}</p>
             </div>
@@ -14,9 +14,8 @@
     {% for actor in movie.casting %}
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">{{ actor.lastname | upper}}</h5>
+                <a href="/person/{{ actor.id}}"><h5 class="card-title">{{ actor.lastname | upper}}</h5></a>
                 <p class="card-text">{{ actor.firstName  }}  {{ actor.lastname  }}</p>
-                <p class="card-text">{{ actor.biography}}</p>
             </div>
         </div>
         <br>

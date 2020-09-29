@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Movie;
+use App\Entity\Person;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -22,17 +23,37 @@ class MovieRepository extends ServiceEntityRepository
     // /**
     //  * @return Movie[] Returns an array of Movie objects
     //  */
-
-
-    /*
-    public function findOneBySomeField($value): ?Movie
+    public function get3LastMovie(): ?array
     {
         return $this->createQueryBuilder('m')
-            ->andWhere('m.exampleField = :val')
-            ->setParameter('val', $value)
+            ->join('m.realisator', 'p')
+            ->addSelect("p")
+            ->orderBy("m.releaseDate","DESC")
+            ->setMaxResults(3)
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getResult();
+
     }
-    */
+    public function getMovies(): ?array
+    {
+        return $this->createQueryBuilder('m')
+            ->join('m.realisator', 'p')
+            ->addSelect("p")
+            ->getQuery()
+            ->getResult();
+
+    }
+
+    public function getMoviesByCategory($id): ?array
+    {
+        return $this->createQueryBuilder('m')
+            ->join('m.category', 'c')
+            ->where('m.category = ?1')
+            ->join('m.realisator', 'p')
+            ->addSelect("p")
+            ->setParameter(1, $id)
+            ->getQuery()
+            ->getResult();
+
+    }
 }
