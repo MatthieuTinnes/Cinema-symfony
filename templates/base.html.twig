@@ -24,6 +24,9 @@
             <a class="nav-link" href="/movies">Movies <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item ">
+            <a class="nav-link" href="/add_movie">Add movie <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item ">
             <a class="nav-link" href="/about">About <span class="sr-only">(current)</span></a>
         </li>
     </ul>
@@ -35,10 +38,9 @@
 </div>
 {% endblock %}
 </body>
-<footer>
+<footer class="footer">
     <ul class="list-group list-group-horizontal">
         {{ render("App\Controller\HomeController:categoryRender") }}
-
     </ul>
 </footer>
 </html>

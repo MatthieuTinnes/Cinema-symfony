@@ -8,12 +8,15 @@ use App\Entity\Category;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Knp\DoctrineBehaviors\Contract\Entity\SluggableInterface;
+use Knp\DoctrineBehaviors\Model\Sluggable\SluggableTrait;
 
 /**
  * @ORM\Entity(repositoryClass=MovieRepository::class)
  */
-class Movie
+class Movie implements SluggableInterface
 {
+    use SluggableTrait;
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -145,5 +148,18 @@ class Movie
         }
 
         return $this;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getSluggableFields(): array
+    {
+        return ['title'];
+    }
+
+    public function generateSlugValue($values): string
+    {
+        return implode('-', $values);
     }
 }

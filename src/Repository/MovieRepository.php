@@ -56,4 +56,16 @@ class MovieRepository extends ServiceEntityRepository
             ->getResult();
 
     }
+
+    public function getMovieDetail($slug): ?Movie
+    {
+        return $this->createQueryBuilder('m')
+            ->where('m.slug = ?1')
+            ->join('m.realisator', 'p')
+            ->addSelect("p")
+            ->setParameter(1, $slug)
+            ->getQuery()
+            ->getOneOrNullResult();
+
+    }
 }

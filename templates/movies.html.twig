@@ -8,7 +8,7 @@
                         <p class="card-text">{{ movie.realisator.firstName  }}  {{ movie.realisator.lastname  }}</p>
                         <p class="card-text">{{ movie.releaseDate|date('Y-m-d')}}</p>
                         <p class="card-text">{{ movie.description}}</p>
-                        <a href="/movie/{{movie.id}}" class="btn btn-primary">Open detail</a>
+                        <a href="/movie/{{movie.slug}}" class="btn btn-primary">Open detail</a>
                     </div>
                 </div>
                 <br>

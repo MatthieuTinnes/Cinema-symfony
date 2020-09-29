@@ -11,7 +11,7 @@
         </div>
     <br>
     <h2>Actors</h2>
-    {% for actor in movie.casting %}
+    {% for actor in actors %}
         <div class="card">
             <div class="card-body">
                 <a href="/person/{{ actor.id}}"><h5 class="card-title">{{ actor.lastname | upper}}</h5></a>
