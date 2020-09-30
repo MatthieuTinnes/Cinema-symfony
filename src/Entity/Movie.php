@@ -177,9 +177,4 @@ class Movie implements SluggableInterface
     {
         return ['title'];
     }
-
-    public function generateSlugValue($values): string
-    {
-        return implode('-', $values);
-    }
 }
