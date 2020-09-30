@@ -12,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class HomeController extends AbstractController
 {
     /**
-     * @Route("/home")
+     * @Route("/home",name="home")
      * @param MovieRepository $movieRepository
      * @return Response
      */
